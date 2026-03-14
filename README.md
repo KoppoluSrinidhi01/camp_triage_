@@ -17,7 +17,7 @@ camp_triage/
 
 ---
 
-##How to Run
+## How to Run
 
 Clone the repository:
 
@@ -27,7 +27,8 @@ cd camp_triage_
 Run the prediction script:
 
 python predict.py
-sample imput:
+
+# sample imput:
 Example:
 age: 30
 glucose_min: 95
@@ -37,7 +38,7 @@ lactate,poc_min: 1.2
 inr_min: 1.0
 2ndarymalig: 0
 abdomhernia: 0
-
+---
 …and see the updated ESI prediction.
 Outputs:
 ![Sample Patient Input](Screenshot 2026-03-14 131924.png)
