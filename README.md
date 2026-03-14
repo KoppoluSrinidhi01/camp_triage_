@@ -17,7 +17,7 @@ camp_triage/
 
 ---
 
-How to Run
+##How to Run
 
 Clone the repository:
 
