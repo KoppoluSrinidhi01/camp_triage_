@@ -27,18 +27,18 @@ cd camp_triage_
 Run the prediction script:
 
 python predict.py
+sample imput:
 Example:
-
-sample["age"] = 30
-sample["glucose_min"] = 120
-sample["hemoglobin_min"] = 12.5
-sample["2ndarymalig"] = 0   # 0 = no, 1 = yes
-sample["abdomhernia"] = 1   # 0 = no, 1 = yes
-
-After modifying these values, rerun:
-
-python predict.py
+age: 30
+glucose_min: 95
+hemoglobin_min: 13.5
+hematocrit_min: 42
+lactate,poc_min: 1.2
+inr_min: 1.0
+2ndarymalig: 0
+abdomhernia: 0
 
 …and see the updated ESI prediction.
 Outputs:
 ![Sample Patient Input](Screenshot 2026-03-14 131924.png)
+
