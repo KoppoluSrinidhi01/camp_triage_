@@ -4,7 +4,6 @@ import time
 
 # ASCII hourglass animation
 def hourglass():
-
     art = [
         "      _____",
         "     /     \\",
@@ -15,40 +14,59 @@ def hourglass():
         "      /   \\",
         "     /_____\\"
     ]
-
     print("\nModel inference starting...\n")
-
     for line in art:
         print(line)
         time.sleep(1)
-
     print("\nWaiting 10 seconds before prediction...\n")
-
     time.sleep(10)
 
-
 print("Loading model...")
-
 model = joblib.load("triage_model.pkl")
 model_columns = joblib.load("model_columns.pkl")
 
-print("Loading dataset...")
+# ----------------------
+# Real-time user input
+# ----------------------
+print("Enter patient data for prediction:")
 
-# DATA PATH
-df = pd.read_csv("data/triage_data.csv")
+# Minimal useful features for demo
+features = [
+    "age",
+    "glucose_min",
+    "hemoglobin_min",
+    "hematocrit_min",
+    "lactate,poc_min",
+    "inr_min",
+    "2ndarymalig",
+    "abdomhernia"
+]
 
-# take one patient sample
-sample = df.drop(columns=["esi"]).iloc[[0]]
+inputs = {}
+for col in features:
+    val = input(f"{col}: ")
+    try:
+        # numeric input
+        inputs[col] = float(val)
+    except:
+        # categorical input
+        inputs[col] = val
 
-# encode categorical columns
+# create DataFrame
+sample = pd.DataFrame([inputs])
+
+# encode categorical columns if needed
 sample = pd.get_dummies(sample)
 
-# align columns with training columns
+# fill remaining model columns with 0 so prediction works
 sample = sample.reindex(columns=model_columns, fill_value=0)
 
-# hackathon delay requirement
+# ----------------------
+# Hourglass animation
+# ----------------------
 hourglass()
 
+# Predict
 prediction = model.predict(sample)
 
 print("\nPredicted ESI Level:", prediction[0] + 1)
