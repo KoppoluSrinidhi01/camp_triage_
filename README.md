@@ -40,3 +40,5 @@ After modifying these values, rerun:
 python predict.py
 
 …and see the updated ESI prediction.
+Outputs:
+![Sample Patient Input](Screenshot 2026-03-14 131924.png)
