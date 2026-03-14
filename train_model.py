@@ -16,7 +16,6 @@ target = "esi"
 # remove rows with missing target
 df = df.dropna(subset=[target])
 
-# split features and target
 X = df.drop(columns=[target])
 y = df[target] - 1   # convert 1-5 → 0-4
 
